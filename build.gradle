@@ -18,6 +18,7 @@ plugins {
     id 'groovy'
     id 'maven-publish'
     id 'idea'
+    id 'java-gradle-plugin'
 }
 
 group = 'org.gradlefx'
@@ -50,6 +51,48 @@ artifacts {
     archives jar
     archives groovydocJar
     archives sourcesJar
+}
+
+gradlePlugin {
+    automatedPublishing = true
+    plugins {
+        gradleFxPlugin {
+            id = 'org.gradlefx.gradlefx'
+            implementationClass = 'org.gradlefx.plugins.GradleFxPlugin'
+        }
+        idePlugin {
+            id = 'org.gradlefx.ide'
+            implementationClass = 'org.gradlefx.ide.plugins.IDEPlugin'
+        }
+        fdtPlugin {
+            id = 'org.gradlefx.fdt'
+            implementationClass = 'org.gradlefx.ide.plugins.FDTPlugin'
+        }
+        flashBuilderPlugin {
+            id = 'org.gradlefx.flashbuilder'
+            implementationClass = 'org.gradlefx.ide.plugins.FlashBuilderPlugin'
+        }
+        flashDevelopPlugin {
+            id = 'org.gradlefx.flashdevelop'
+            implementationClass = 'org.gradlefx.ide.plugins.FlashDevelopPlugin'
+        }
+        ideaFxPlugin {
+            id = 'org.gradlefx.ideaplugin'
+            implementationClass = 'org.gradlefx.ide.plugins.IdeaPlugin'
+        }
+        templatesPlugin {
+            id = 'org.gradlefx.templates'
+            implementationClass = 'org.gradlefx.templates.plugins.TemplatesPlugin'
+        }
+        scaffoldPlugin {
+            id = 'org.gradlefx.scaffold'
+            implementationClass = 'org.gradlefx.templates.plugins.ScaffoldPlugin'
+        }
+        creatorPlugin {
+            id = 'org.gradlefx.creator'
+            implementationClass = 'org.gradlefx.templates.plugins.CreatorPlugin'
+        }
+    }
 }
 
 publishing {
