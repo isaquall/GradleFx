@@ -30,8 +30,7 @@ import org.gradlefx.util.TemplateUtil
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
-@Mixin(TemplateUtil)
-abstract class AbstractIDEProject extends DefaultTask implements ProjectTask {
+abstract class AbstractIDEProject extends DefaultTask implements ProjectTask, TemplateUtil {
 
     protected static final Logger LOG = LoggerFactory.getLogger 'gradlefx'
 
