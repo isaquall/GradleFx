@@ -16,6 +16,7 @@
 
 plugins {
     id 'groovy'
+    id 'maven-publish'
     id 'idea'
 }
 
@@ -49,4 +50,46 @@ artifacts {
     archives jar
     archives groovydocJar
     archives sourcesJar
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifactId = "gradlefx"
+            from components.java
+            artifact groovydocJar
+            artifact sourcesJar
+            pom {
+                name = 'GradleFx'
+                packaging = 'jar'
+                description 'GradleFx is a Gradle plugin for building Flex and Actionscript applications'
+                url = 'http://gradlefx.github.com/'
+
+                scm {
+                    url = 'scm:git@github.com:GradleFx/GradleFx.git'
+                    connection = 'scm:git@github.com:GradleFx/GradleFx.git'
+                    developerConnection = 'scm:git@github.com:GradleFx/GradleFx.git'
+                }
+
+                licenses {
+                    license {
+                        name = 'The Apache Software License, Version 2.0'
+                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                        distribution = 'repo'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id = 'yennicktrevels'
+                        name = 'Yennick Trevels'
+                    }
+                    developer {
+                        id = 'stevendick'
+                        name = 'Steven Dick'
+                    }
+                }
+            }
+        }
+    }
 }
