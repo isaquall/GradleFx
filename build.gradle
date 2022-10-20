@@ -22,7 +22,7 @@ plugins {
 }
 
 group = 'org.gradlefx'
-version = '1.5.1'
+version = '1.5.2-SNAPSHOT'
 ext.packaging = 'jar'
 
 repositories {
@@ -98,7 +98,7 @@ gradlePlugin {
 publishing {
     publications {
         mavenJava(MavenPublication) {
-            artifactId = "gradlefx"
+            artifactId = 'gradlefx'
             from components.java
             artifact groovydocJar
             artifact sourcesJar
